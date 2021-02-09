@@ -98,3 +98,6 @@ project(libproperties LANGUAGES C)
 
 cmake 的 string 和 list 是可以互换使用的，只是 list 数据是以分好分隔的，而 string 并无此约束。所以，string 转 list 只需要将 string 中的数据换成以分号分割即可。list 转 string 直接赋值就可以了。
 
+## FAQ-010 cmake 里面如何引用环境变量？
+
+假设要引用环境变量 JAVA_HOME，可以这样`$ENV{JAVA_HOME}`。
