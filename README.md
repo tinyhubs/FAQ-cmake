@@ -39,7 +39,11 @@ target_include_directories(mylib PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 
 `CMAKE_CURRENT_SOURCE_DIR`
 
-## FAQ-005 如何为动态库指定 x.y.z 形式的版本号？
+## FAQ-005 当前这个 xxx.cmake 所在的目录是什么变量？
+
+`CMAKE_CURRENT_LIST_DIR`
+
+## FAQ-006 如何为动态库指定 x.y.z 形式的版本号？
 
 一种简单的拌饭是先指定 project 的版本号，然后通过 `CMAKE_PROJECT_VERSION` `CMAKE_PROJECT_VERSION_MAJOR` 等变量去灵活引用版本号
 
@@ -68,7 +72,7 @@ lrwxrwxrwx. 1 liugang liugang    22 12月 13 20:04 libproperties.so.1 -> libprop
 `CMAKE_PROJECT_VERSION` 还有几个相关的变量可用，可以自行查阅 cmake 手册。
 
 
-## FAQ-006 如何指定最终文件输出路径？
+## FAQ-007 如何指定最终文件输出路径？
 
 这个要分情况来处理，不同的类型，是有不同变量控制的：
 
@@ -82,7 +86,7 @@ lrwxrwxrwx. 1 liugang liugang    22 12月 13 20:04 libproperties.so.1 -> libprop
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/lib)
 ```
 
-## FAQ-007 如何指定使用 C 编译器编译所有源代码？
+## FAQ-008 如何指定使用 C 编译器编译所有源代码？
 
 可以在定义 project 时，指定 project 的 `LANGUAGES` 属性，如下示例：
 
@@ -90,4 +94,7 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/lib)
 project(libproperties LANGUAGES C)
 ```
 
+## FAQ-009 如何 cmake 的 string 转换成 list？
+
+cmake 的 string 和 list 是可以互换使用的，只是 list 数据是以分好分隔的，而 string 并无此约束。所以，string 转 list 只需要将 string 中的数据换成以分号分割即可。list 转 string 直接赋值就可以了。
 
